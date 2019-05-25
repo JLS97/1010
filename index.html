@@ -1,27 +1,23 @@
-<!DOCTYPE html5>
+<!DOCTYPE html>
 <html>
 <head>
 	<title>10x10</title>
+	<script type="text/javascript" src="index.js"></script>
+	<style type="text/css" href="canvas.css"></style>
 </head>
-<body>
+<body onload="pintarPanelJuego();">
 	<header>Mi Juego 10x10</header>
-	<section id="t">
-		<canvas id="tablero" height="500" width="500">
-		Su  navegador no soporta canvas
-		</canvas>
-	</section>
-
-	<section id="f">
-		<canvas id="ficha1">
-		Su navegador no soporta canvas
-		</canvas>
-		<canvas id="ficha2">
-		Su navegador no soporta canvas
-		</canvas>
-		<canvas id="ficha3">
-		Su navegador no soporta canvas
-		</canvas>
-	</section>
+	<div>
+		<h2>Zona de juego</h2>
+		<canvas height="400" width="400" id="panel" style="border:2px solid #a00"></canvas>
+		<p>Puntuacion: 1394</p>
+	</div>
+	<div>
+		<h2>Piezas disponibles</h2>
+		<canvas height="100" width="100" id="pieza1" style="border:2px solid #a00"></canvas>
+		<canvas height="100" width="100" id="pieza2" style="border:2px solid #a00"></canvas>
+		<canvas height="100" width="100" id="pieza3" style="border:2px solid #a00"></canvas>
+	</div>
 
 	<footer>Fin de página</footer>
 </body>

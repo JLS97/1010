@@ -39,9 +39,6 @@ class panel
 			this.height = 100;
 			this.width = 100;
 
-			this.tipo = num;
-
-			this.titulo = 'Pieza disponible';
 		}
 	}
 

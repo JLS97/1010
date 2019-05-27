@@ -1,7 +1,7 @@
 //objeto de tipo pieza
 class Pieza 
 {
-	constructor(num)
+	constructor(num,canvas,panel)
 	{
 		if(num == 0)
 			this.tipo =1;
@@ -12,6 +12,42 @@ class Pieza
 		this.isSelected = false;
 
 		this.color = 'red';
+		this.canvas = canvas;
+
+		this.vacia = false;
+
+		//panel asociado a cada ficha
+		this.panel = panel;
+	}
+
+	reset(num)
+	{
+		if(num == 0)
+			this.tipo =1;
+		else
+			this.tipo = num;
+
+		this.colorPieza = '#a00';
+		this.isSelected = false;
+
+		this.color = 'red';
+
+
+		//reseteo el canvas para que no se me pinte la nueva pieza encima de la antigua
+		var canvas = document.getElementById(this.canvas);
+		var ctx = canvas.getContext("2d");
+
+		for(var i = 0;i<100;i++)
+		{
+			for(var j = 0;j<100;j++)
+			{
+				ctx.clearRect(i, j, 20, 20);
+			}
+		}
+		this.vacia = true;
+		
+		//hemos vaciado el canvas por lo que ahora deberemos vovler a pintar el panel
+		this.panel.pintar(5,this.canvas);
 	}
 
 	tipo()
@@ -22,10 +58,16 @@ class Pieza
 	{
 		return this.isSelected;
 	}
-	//le paso como parametro el id del canvas en el que estoy, para que lo pinte ahi
-	pinta(pieza)
+
+	getVacia()
 	{
-		let cv = document.getElementById(pieza);
+		return this.vacia;
+	}
+	//le paso como parametro el id del canvas en el que estoy, para que lo pinte ahi
+	pinta()
+	{
+		this.vacia = false;
+		let cv = document.getElementById(this.canvas);
 		let ctx = cv.getContext('2d');
 
 		//definimos los distintos tipos de pieza a pintar
